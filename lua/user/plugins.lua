@@ -1,5 +1,6 @@
 -- Additional Plugins
 lvim.plugins = {
+  "folke/tokyonight.nvim",
   {
     "mawkler/modicator.nvim",
     event = "ColorScheme",

@@ -17,7 +17,7 @@ lvim.builtin.cmp.window = {
 }
 vim.opt.pumblend = 10
 
-lvim.builtin.cmp.formatting.source_names = {}
+-- lvim.builtin.cmp.formatting.source_names = {}
 
 
 lvim.builtin.cmp.sources[2].entry_filter = function(entry, ctx)

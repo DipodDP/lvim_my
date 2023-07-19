@@ -36,6 +36,7 @@ lvim.builtin.dap.active = true
 local config = {
   cmd = {
     "java",
+    "-DURL=jdbc:postgresql://localhost:5432/algafood",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -57,7 +58,6 @@ local config = {
   },
   root_dir = require("jdtls.setup").find_root { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
   capabilities = capabilities,
-
   settings = {
     java = {
       eclipse = {
@@ -66,6 +66,10 @@ local config = {
       configuration = {
         updateBuildConfiguration = "interactive",
         runtimes = {
+          {
+            name = "JavaSE-11",
+            path = "~/.asdf/installs/java/openjdk-11.0.2",
+          },
           {
             name = "JavaSE-17",
             path = "~/.asdf/installs/java/openjdk-17.0.2",
@@ -107,8 +111,9 @@ local config = {
 
 config["on_attach"] = function(client, bufnr)
   local _, _ = pcall(vim.lsp.codelens.refresh)
-	require("jdtls").setup_dap({ hotcodereplace = "auto" })
-	require("lvim.lsp").on_attach(client, bufnr)
+  require("jdtls").setup_dap({ hotcodereplace = "auto" })
+  require('jdtls.dap').setup_dap_main_class_configs()
+  require("lvim.lsp").on_attach(client, bufnr)
   local status_ok, jdtls_dap = pcall(require, "jdtls.dap")
   if status_ok then
     jdtls_dap.setup_dap_main_class_configs()
@@ -135,21 +140,21 @@ if not status_ok then
 end
 
 local opts = {
-  mode = "n", -- NORMAL mode
+  mode = "n",     -- NORMAL mode
   prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
 }
 
 local vopts = {
-  mode = "v", -- VISUAL mode
+  mode = "v",     -- VISUAL mode
   prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
 }
 
 local mappings = {
@@ -160,7 +165,7 @@ local mappings = {
     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
-    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+    u = { "<Cmd>lua require'jdtls'.update_project_config()<CR>", "Update Config" },
   },
 }
 
@@ -176,3 +181,12 @@ local vmappings = {
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
 which_key.register(vmappings, vopts)
+
+error("this is something")
+vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
+vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
+vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()"
+vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
+vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
+vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+

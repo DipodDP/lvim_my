@@ -26,7 +26,7 @@ reload "user.neogit"
 reload "user.colorizer"
 reload "user.lualine"
 reload "user.tabnine"
-reload "user.copilot"
+-- reload "user.copilot"
 -- reload "user.chatgpt"
 reload "user.whichkey"
 reload "user.neoai"
@@ -36,3 +36,14 @@ reload "nostr"
 reload "user.astro-tools"
 reload "user.matchup"
 reload "user.modicator"
+
+-- require("neotest").setup({
+--   adapters = {
+--     require("neotest-java")
+--   }
+-- })
+reload "user.zk"
+-- vim.g.did_load_filetypes = 1
+-- vim.g.snippets = "luasnip"
+-- vim.g.db = "postgresql://postgres:1234@127.0.0.1:5432/algafood"
+

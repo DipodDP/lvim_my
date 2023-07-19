@@ -1,5 +1,15 @@
 vim.diagnostic.config { virtual_text = false }
 
+
+-- require('lspconfig').yamlls.setup {
+--   settings = {
+--     yaml = {
+--       schemas = {
+--         ["/home/moreira/repos/algafood/build/classes/java/main/META-INF/spring-configuration-metadata.json"] = "application*.yaml",
+--       },
+--     },
+--   }
+-- }
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })

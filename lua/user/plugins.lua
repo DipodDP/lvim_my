@@ -101,15 +101,11 @@ lvim.plugins = {
   "nvim-treesitter/nvim-treesitter-textobjects",
   "mfussenegger/nvim-jdtls",
   "opalmay/vim-smoothie",
-  "j-hui/fidget.nvim",
   {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup({
-        filetypes = { "tsx", "typescriptreact" },
-      })
-    end,
+    "j-hui/fidget.nvim",
+    branch = "legacy",
   },
+  "windwp/nvim-ts-autotag",
   "kylechui/nvim-surround",
   "christianchiarulli/harpoon",
   -- "MattesGroeger/vim-bookmarks",
@@ -130,7 +126,7 @@ lvim.plugins = {
   "kevinhwang91/nvim-bqf",
   "is0n/jaq-nvim",
   "nacro90/numb.nvim",
-  "TimUntersberger/neogit",
+  "neogitorg/neogit",
   "sindrets/diffview.nvim",
   "simrat39/rust-tools.nvim",
   "olexsmir/gopher.nvim",
@@ -196,6 +192,7 @@ lvim.plugins = {
     "hrsh7th/cmp-emoji",
     event = "BufRead",
   },
+  "ThePrimeagen/vim-be-good",
   -- "folke/noice.nvim",
   -- "rcarriga/nvim-notify",
 

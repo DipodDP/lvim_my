@@ -1,26 +1,46 @@
 -- Additional Plugins
 
 lvim.plugins = {
-"tpope/vim-dotenv",
+-- Lua
 {
-        "kristijanhusak/vim-dadbod-completion",
-        event = 'InsertEnter',
-        init = function()
-          vim.api.nvim_create_autocmd("FileType", {
-            desc = "dadbod completion",
-            group = vim.api.nvim_create_augroup("dadbod_cmp", { clear = true }),
-            pattern = { "sql", "mysql", "plsql" },
-            callback = function() require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } } end,
-          })
+  '0x00-ketsu/markdown-preview.nvim',
+  ft = {'md', 'markdown', 'mkd', 'mkdn', 'mdwn', 'mdown', 'mdtxt', 'mdtext', 'rmd', 'wiki'},
+  config = function()
+    require('markdown-preview').setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the setup section below
+    }
+  end
+},
+  {
+    "ellisonleao/glow.nvim",
+    config = function()
+      require("glow").setup()
+    end,
+  },
+  "tpope/vim-dotenv",
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    event = "InsertEnter",
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        desc = "dadbod completion",
+        group = vim.api.nvim_create_augroup("dadbod_cmp", { clear = true }),
+        pattern = { "sql", "mysql", "plsql" },
+        callback = function()
+          require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
         end,
-      },
+      })
+    end,
+  },
   { "tpope/vim-dadbod" },
   { "kristijanhusak/vim-dadbod-ui" },
   {
     "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("rest-nvim").setup({
+      require("rest-nvim").setup {
         -- Open request results in a horizontal split
         result_split_horizontal = false,
         -- Keep the http file buffer above|left when split horizontal|vertical
@@ -48,16 +68,16 @@ lvim.plugins = {
             json = "jq",
             html = function(body)
               return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-            end
+            end,
           },
         },
         -- Jump to request line on run
         jump_to_request = false,
-        env_file = '.env',
+        env_file = ".env",
         custom_dynamic_variables = {},
         yank_dry_run = true,
-      })
-    end
+      }
+    end,
   },
   -- {
   --   "whynothugo/lsp_lines.nvim",
@@ -71,7 +91,7 @@ lvim.plugins = {
       require("auto-save").setup()
     end,
   },
-  'renerocksai/telekasten.nvim',
+  "renerocksai/telekasten.nvim",
   "folke/tokyonight.nvim",
   {
     "mawkler/modicator.nvim",

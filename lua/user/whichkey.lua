@@ -4,7 +4,7 @@ lvim.builtin.which_key.setup.ignore_missing = true
 lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
 lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
 lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
-lvim.builtin.which_key.mappings["S"] = { "<cmd>ASToggle<cr>", "Toggle autosave"}
+lvim.builtin.which_key.mappings["S"] = { "<cmd>ASToggle<cr>", "Toggle autosave" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>AerialToggle!<cr>", "Outline" }
 lvim.builtin.which_key.mappings["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
 lvim.builtin.which_key.mappings["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
@@ -157,13 +157,15 @@ lvim.builtin.which_key.mappings["t"] = {
 
 lvim.builtin.which_key.mappings["n"] = {
   name = "Notes",
-  c = { "<cmd>Telekasten show_calendar<cr>", "Calendar" },
-  n = { "<cmd>Telekasten new_note<cr>", "Note" },
-  f = { "<cmd>Telekasten find_notes<cr>", "Find" },
-  F = { "<cmd>Telekasten find_daily_notes<cr>", "Find Journal" },
-  j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
-  p = { "<cmd>Telekasten panel<cr>", "Panel" },
-  t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+  w = {
+    name = "Workspaces",
+
+    h = { "<cmd>Neorg workspace home<cr>", "Home" },
+    n = { "<cmd>Neorg workspace notes<cr>", "Notes" },
+    j = { "<cmd>Neorg workspace journal<cr>", "Journal" },
+    w = { "<cmd>Neorg workspace work<cr>", "Work" },
+  },
+  r = { "<cmd>Neorg return<cr>", "Return" },
 }
 
 lvim.builtin.which_key.mappings[";"] = nil
@@ -173,12 +175,12 @@ lvim.builtin.which_key.mappings["s"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
 
 local m_opts = {
-  mode = "n",     -- NORMAL mode
+  mode = "n", -- NORMAL mode
   prefix = "m",
-  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true,  -- use `silent` when creating keymaps
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true,  -- use `nowait` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
 }
 
 local status_ok, which_key = pcall(require, "which-key")

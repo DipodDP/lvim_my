@@ -19,7 +19,6 @@ vim.opt.pumblend = 10
 
 -- lvim.builtin.cmp.formatting.source_names = {}
 
-
 lvim.builtin.cmp.sources[2].entry_filter = function(entry, ctx)
   local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
   if kind == "Snippet" and ctx.prev_context.filetype == "java" then
@@ -32,3 +31,5 @@ lvim.builtin.cmp.sources[2].entry_filter = function(entry, ctx)
 
   return true
 end
+
+table.insert(lvim.builtin.cmp.sources, { name = "neorg" })

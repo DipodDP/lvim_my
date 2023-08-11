@@ -1,23 +1,16 @@
 -- Additional Plugins
 
 lvim.plugins = {
--- Lua
-{
-  '0x00-ketsu/markdown-preview.nvim',
-  ft = {'md', 'markdown', 'mkd', 'mkdn', 'mdwn', 'mdown', 'mdtxt', 'mdtext', 'rmd', 'wiki'},
-  config = function()
-    require('markdown-preview').setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the setup section below
-    }
-  end
-},
   {
-    "ellisonleao/glow.nvim",
-    config = function()
-      require("glow").setup()
-    end,
+    "nvim-neorg/neorg",
+    -- dependencies = {
+    --   "nvim-neorg/core.completion",
+    --   "nvim-neorg/core.concealer",
+    --   "nvim-neorg/core.dirman",
+    --   "nvim-neorg/core.summary",
+    --   "nvim-neorg/core.integrations.nvim-cmp",
+    -- },
+    build = ":Neorg sync-parsers", -- This is the important bit!
   },
   "tpope/vim-dotenv",
   {
@@ -38,7 +31,6 @@ lvim.plugins = {
   { "kristijanhusak/vim-dadbod-ui" },
   {
     "rest-nvim/rest.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("rest-nvim").setup {
         -- Open request results in a horizontal split
@@ -101,7 +93,7 @@ lvim.plugins = {
   -- {
   --   dir = "/Users/chris/Repos/bookmark.nvim",
   -- },
-  "andymass/vim-matchup",
+  -- "andymass/vim-matchup",
   "lunarvim/synthwave84.nvim",
   {
     "kndndrj/nvim-dbee",
@@ -125,7 +117,7 @@ lvim.plugins = {
     "j-hui/fidget.nvim",
     branch = "legacy",
   },
-  "windwp/nvim-ts-autotag",
+  -- "windwp/nvim-ts-autotag",
   "kylechui/nvim-surround",
   "christianchiarulli/harpoon",
   -- "MattesGroeger/vim-bookmarks",
@@ -158,7 +150,6 @@ lvim.plugins = {
   {
     "saecki/crates.nvim",
     version = "v0.3.0",
-    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("crates").setup {
         null_ls = {
@@ -206,7 +197,7 @@ lvim.plugins = {
   "Bryley/neoai.nvim",
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
-  -- "andy-bell101/neotest-java",
+  "andy-bell101/neotest-java",
   "nvim-neotest/neotest-python",
   {
     "hrsh7th/cmp-emoji",

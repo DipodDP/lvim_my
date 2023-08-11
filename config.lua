@@ -1,3 +1,5 @@
+reload "user.neorg"
+reload "user.plugins"
 reload "user.options"
 reload "user.keymaps"
 reload "user.autocommands"
@@ -49,3 +51,5 @@ reload "user.zk"
 -- vim.g.snippets = "luasnip"
 -- vim.g.db = "postgresql://postgres:1234@127.0.0.1:5432/algafood"
 
+-- neo-test-java
+-- neorg

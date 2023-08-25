@@ -1,15 +1,61 @@
 -- Additional Plugins
 
 lvim.plugins = {
+  "nvim-neotest/neotest-vim-test",
+  "vim-test/vim-test",
+  "vim-crystal/vim-crystal",
+  {
+    url = "https://gitlab.com/itaranto/plantuml.nvim",
+    version = "*",
+    config = function()
+      require("plantuml").setup {
+        renderer = {
+          type = "image",
+          options = {
+            prog = "feh",
+            dark_mode = true,
+          },
+        },
+        render_on_write = false,
+      }
+    end,
+  },
+
+  {
+    "3rd/image.nvim",
+    rocks = { "magick" },
+  },
+
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup {
+        auto_open = false,
+        auto_close = true,
+        padding = false,
+        height = 10,
+        use_diagnostic_signs = true,
+      }
+    end,
+    event = "VeryLazy",
+    cmd = "Trouble",
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
+  {
+    "Joakker/lua-json5",
+    build = "./install.sh",
+  },
+  {
+    "dccsillag/magma-nvim",
+    build = ":UpdateRemotePlugins",
+  },
   {
     "nvim-neorg/neorg",
-    -- dependencies = {
-    --   "nvim-neorg/core.completion",
-    --   "nvim-neorg/core.concealer",
-    --   "nvim-neorg/core.dirman",
-    --   "nvim-neorg/core.summary",
-    --   "nvim-neorg/core.integrations.nvim-cmp",
-    -- },
     build = ":Neorg sync-parsers", -- This is the important bit!
   },
   "tpope/vim-dotenv",
@@ -83,7 +129,6 @@ lvim.plugins = {
       require("auto-save").setup()
     end,
   },
-  "renerocksai/telekasten.nvim",
   "folke/tokyonight.nvim",
   {
     "mawkler/modicator.nvim",
@@ -94,6 +139,7 @@ lvim.plugins = {
   --   dir = "/Users/chris/Repos/bookmark.nvim",
   -- },
   -- "andymass/vim-matchup",
+  "MunifTanjim/nui.nvim",
   "lunarvim/synthwave84.nvim",
   {
     "kndndrj/nvim-dbee",
@@ -138,7 +184,16 @@ lvim.plugins = {
   "kevinhwang91/nvim-bqf",
   "is0n/jaq-nvim",
   "nacro90/numb.nvim",
-  "neogitorg/neogit",
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",       -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",      -- optional
+      "ibhagwan/fzf-lua",            -- optional
+    },
+    config = true
+  },
   "sindrets/diffview.nvim",
   "simrat39/rust-tools.nvim",
   "olexsmir/gopher.nvim",
@@ -198,18 +253,13 @@ lvim.plugins = {
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
   "andy-bell101/neotest-java",
+  "nvim-neotest/neotest-go",
   "nvim-neotest/neotest-python",
+  "rouge8/neotest-rust",
+  "haydenmeade/neotest-jest",
   {
     "hrsh7th/cmp-emoji",
     event = "BufRead",
   },
   "ThePrimeagen/vim-be-good",
-  -- "folke/noice.nvim",
-  -- "rcarriga/nvim-notify",
-
-  -- https://github.com/jose-elias-alvarez/typescript.nvim
-  -- "rmagatti/auto-session",
-  -- "rmagatti/session-lens"
-  -- "christianchiarulli/nvim-ts-rainbow",
-  -- "karb94/neoscroll.nvim",
 }

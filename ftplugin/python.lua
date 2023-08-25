@@ -35,6 +35,15 @@ formatters.setup { { name = "black" } }
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup { { command = "flake8", args = { "--ignore=E203,E501" }, filetypes = { "python" } } }
 
+
+-- setup debug adapter
+lvim.builtin.dap.active = true
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+pcall(function()
+  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+end)
+
+
 local opts = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
@@ -44,34 +53,32 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
--- setup debug adapter
-lvim.builtin.dap.active = true
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
-pcall(function()
-  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
-end)
-
--- setup testing
-require("neotest").setup {
-  adapters = {
-    require "neotest-python" {
-      -- Extra arguments for nvim-dap configuration
-      -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
-      dap = {
-        justMyCode = false,
-        console = "integratedTerminal",
-      },
-      args = { "--log-level", "DEBUG", "--quiet" },
-      runner = "pytest",
-    },
-  },
+local vopts = {
+  mode = "v",     -- VISUAL mode
+  prefix = "<leader>",
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
 }
 
 local mappings = {
   C = {
     name = "Python",
-    c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+    r = { "<cmd>MagmaReevaluateCell<cr>", "Reevaluate cell" },
+    s = { "<cmd>MagmaShowOutput<cr>", "Show output" },
+    e = { "<cmd>MagmaEvaluateLine<cr>", "Evaluate line" },
+  },
+}
+
+local vmappings = {
+  C = {
+    name = "Python",
+    e = { "<cmd>MagmaEvaluateVisual<cr>", "Evaluate visual" },
   },
 }
 
 which_key.register(mappings, opts)
+which_key.register(vmappings, vopts)
+
+

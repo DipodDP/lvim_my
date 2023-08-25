@@ -1,6 +1,5 @@
 lvim.builtin.which_key.setup.plugins.presets["operators"] = false
 lvim.builtin.which_key.setup.ignore_missing = true
-
 lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
 lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
 lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
@@ -16,6 +15,9 @@ lvim.builtin.which_key.mappings["R"] = {
   w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
+
+
+require("luasnip.extras.select_choice")
 lvim.builtin.which_key.mappings["r"] = {
   name = "rest",
   r = { "<Plug>RestNvim", "Run" },
@@ -63,8 +65,8 @@ lvim.builtin.which_key.mappings["f"] = {
 }
 lvim.builtin.which_key.mappings["g"] = {
   name = "Git",
-  -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
-  g = { "<cmd>Neogit<cr>", "Neogit" },
+  g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
+  -- g = { "<cmd>Neogit<cr>", "Neogit" },
   j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
   k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
   l = { "<cmd>GitBlameToggle<cr>", "Blame" },
@@ -166,11 +168,12 @@ lvim.builtin.which_key.mappings["n"] = {
     w = { "<cmd>Neorg workspace work<cr>", "Work" },
   },
   r = { "<cmd>Neorg return<cr>", "Return" },
+  j = { "<cmd>Neorg journal<cr>", "Journal" },
 }
 
 lvim.builtin.which_key.mappings[";"] = nil
 -- lvim.builtin.which_key.mappings["c"] = nil
-lvim.builtin.which_key.mappings["L"] = nil
+-- lvim.builtin.which_key.mappings["L"] = nil
 lvim.builtin.which_key.mappings["s"] = nil
 lvim.builtin.which_key.mappings["w"] = nil
 

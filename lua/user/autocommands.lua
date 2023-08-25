@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "gitcommit", "markdown", "norg" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -214,3 +214,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- print(vim.inspect(client))
   end,
 })
+
+vim.api.nvim_create_autocmd(
+    { "BufRead", },
+    { pattern = { "*.py" }, command = "MagmaInit" }
+)

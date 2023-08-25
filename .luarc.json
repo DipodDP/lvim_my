@@ -1,6 +1,12 @@
 {
     "workspace.checkThirdParty": false,
     "diagnostics.globals": [
-        "reload"
+        "reload",
+        "s",
+        "t",
+        "c",
+        "i",
+        "f",
+        "strategy"
     ]
 }

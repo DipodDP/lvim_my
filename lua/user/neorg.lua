@@ -11,6 +11,7 @@ neorg.setup {
         workspaces = {
           home = "~/neorg/",
           notes = "~/neorg/notes",
+          books = "~/neorg/books",
           journal = "~/neorg/journal",
         },
         default_workspace = "home",
@@ -21,5 +22,6 @@ neorg.setup {
         engine = "nvim-cmp",
       },
     },
+    ["core.concealer"] = {},
   },
 }

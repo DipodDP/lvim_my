@@ -98,7 +98,11 @@ local config = {
         },
       },
       format = {
-        enabled = false,
+        enabled = true,
+        settings = {
+          profile = "GoogleStyle",
+          url = home .. "/.config/lvim/.java-google-formatter.xml",
+        },
       },
     },
     signatureHelp = { enabled = true },
@@ -111,8 +115,8 @@ local config = {
 
 config["on_attach"] = function(client, bufnr)
   local _, _ = pcall(vim.lsp.codelens.refresh)
-  require("jdtls").setup_dap({ hotcodereplace = "auto" })
-  require('jdtls.dap').setup_dap_main_class_configs()
+  require("jdtls").setup_dap { hotcodereplace = "auto" }
+  require("jdtls.dap").setup_dap_main_class_configs()
   require("lvim.lsp").on_attach(client, bufnr)
   local status_ok, jdtls_dap = pcall(require, "jdtls.dap")
   if status_ok then
@@ -127,10 +131,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
 })
 
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  { command = "google_java_format", filetypes = { "java" } },
-}
+-- local formatters = require "lvim.lsp.null-ls.formatters"
+-- formatters.setup {
+--   { command = "google_java_format", filetypes = { "java" } },
+-- }
 
 require("jdtls").start_or_attach(config)
 
@@ -140,21 +144,21 @@ if not status_ok then
 end
 
 local opts = {
-  mode = "n",     -- NORMAL mode
+  mode = "n", -- NORMAL mode
   prefix = "<leader>",
-  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true,  -- use `silent` when creating keymaps
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true,  -- use `nowait` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
 }
 
 local vopts = {
-  mode = "v",     -- VISUAL mode
+  mode = "v", -- VISUAL mode
   prefix = "<leader>",
-  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true,  -- use `silent` when creating keymaps
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = true,  -- use `nowait` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
 }
 
 local mappings = {
@@ -188,4 +192,3 @@ vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
 vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
-

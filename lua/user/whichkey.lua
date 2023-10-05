@@ -17,14 +17,11 @@ lvim.builtin.which_key.mappings["R"] = {
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
 
-
-require("luasnip.extras.select_choice")
 lvim.builtin.which_key.mappings["r"] = {
-  name = "rest",
-  r = { "<Plug>RestNvim", "Run" },
-  p = { "<Plug>RestNvimPreview", "Preview" },
-  l = { "<Plug>RestNvimLast", "Last" },
+  name = "Refactor",
+  e = { "<cmd>Refactor extract<cr>", "Replace" },
 }
+
 lvim.builtin.which_key.mappings["a"] = {
   name = "A.I.",
   c = { "<cmd>ChatGPT<cr>", "ChatGPT" },
@@ -38,6 +35,7 @@ lvim.builtin.which_key.mappings["a"] = {
 lvim.builtin.which_key.mappings["d"] = {
   name = "Debug",
   b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+  B = { "<cmd>lua require'dap'.list_breakpoints()<cr>", "Breakpoint" },
   c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
   i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
   o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
@@ -46,6 +44,7 @@ lvim.builtin.which_key.mappings["d"] = {
   l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
   u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+  e = { "<Cmd>lua require('dapui').eval()<CR>", "eval"},
 }
 lvim.builtin.which_key.mappings["f"] = {
   name = "Find",
@@ -66,8 +65,7 @@ lvim.builtin.which_key.mappings["f"] = {
 }
 lvim.builtin.which_key.mappings["g"] = {
   name = "Git",
-  g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
-  -- g = { "<cmd>Neogit<cr>", "Neogit" },
+  g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr><cr>", "Lazygit" },
   j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
   k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
   l = { "<cmd>GitBlameToggle<cr>", "Blame" },
@@ -101,7 +99,7 @@ lvim.builtin.which_key.mappings["g"] = {
 lvim.builtin.which_key.mappings["l"] = {
   name = "LSP",
   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-  c = { "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>", "Get Capabilities" },
+  -- c = { "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<cr>", "Get Capabilities" },
   -- c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
   d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
   w = {
@@ -136,6 +134,7 @@ lvim.builtin.which_key.mappings["l"] = {
   t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
   u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
 }
+
 lvim.builtin.which_key.mappings["t"] = {
   name = "Tab",
   t = {
@@ -160,6 +159,7 @@ lvim.builtin.which_key.mappings["o"] = {
 
 lvim.builtin.which_key.mappings["n"] = {
   name = "Notes",
+
   w = {
     name = "Workspaces",
 
@@ -168,6 +168,8 @@ lvim.builtin.which_key.mappings["n"] = {
     j = { "<cmd>Neorg workspace journal<cr>", "Journal" },
     w = { "<cmd>Neorg workspace work<cr>", "Work" },
   },
+  s = { "<cmd>Neorg generate-workspace-summary<cr>", "Summary" },
+  n = { "<cmd>Neorg keybind norg core.dirman.new.note<cr>", "New Note" },
   r = { "<cmd>Neorg return<cr>", "Return" },
   j = { "<cmd>Neorg journal<cr>", "Journal" },
 }

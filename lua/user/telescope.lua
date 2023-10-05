@@ -183,7 +183,7 @@ lvim.builtin.telescope.pickers.lsp_implementations = {
 lvim.builtin.telescope.defaults.selection_caret = "  "
 
 require("telescope-tabs").setup {
-  show_preview = false,
+  show_preview = true,
   close_tab_shortcut = "C-d",
   initial_mode = "normal",
   theme = "dropdown",

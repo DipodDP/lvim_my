@@ -1,9 +1,7 @@
 -- Additional Plugins
 
 lvim.plugins = {
-  "nvim-neotest/neotest-vim-test",
-  "vim-test/vim-test",
-  "vim-crystal/vim-crystal",
+  "onsails/lspkind.nvim",
   {
     url = "https://gitlab.com/itaranto/plantuml.nvim",
     version = "*",
@@ -20,12 +18,10 @@ lvim.plugins = {
       }
     end,
   },
-
   {
     "3rd/image.nvim",
     rocks = { "magick" },
   },
-
   {
     "folke/trouble.nvim",
     config = function()
@@ -47,18 +43,15 @@ lvim.plugins = {
     end,
   },
   {
-    "Joakker/lua-json5",
-    build = "./install.sh",
-  },
-  {
-    "dccsillag/magma-nvim",
-    build = ":UpdateRemotePlugins",
-  },
-  {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers", -- This is the important bit!
   },
-  "tpope/vim-dotenv",
+  {
+    "ellisonleao/dotenv.nvim",
+    config = function()
+      require("dotenv").setup()
+    end,
+  },
   {
     "kristijanhusak/vim-dadbod-completion",
     event = "InsertEnter",
@@ -75,54 +68,7 @@ lvim.plugins = {
   },
   { "tpope/vim-dadbod" },
   { "kristijanhusak/vim-dadbod-ui" },
-  {
-    "rest-nvim/rest.nvim",
-    config = function()
-      require("rest-nvim").setup {
-        -- Open request results in a horizontal split
-        result_split_horizontal = false,
-        -- Keep the http file buffer above|left when split horizontal|vertical
-        result_split_in_place = false,
-        -- Skip SSL verification, useful for unknown certificates
-        skip_ssl_verification = false,
-        -- Encode URL before making request
-        encode_url = true,
-        -- Highlight request on run
-        highlight = {
-          enabled = true,
-          timeout = 150,
-        },
-        result = {
-          -- toggle showing URL, HTTP info, headers at top the of result window
-          show_url = true,
-          -- show the generated curl command in case you want to launch
-          -- the same request via the terminal (can be verbose)
-          show_curl_command = false,
-          show_http_info = true,
-          show_headers = true,
-          -- executables or functions for formatting response body [optional]
-          -- set them to false if you want to disable them
-          formatters = {
-            json = "jq",
-            html = function(body)
-              return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-            end,
-          },
-        },
-        -- Jump to request line on run
-        jump_to_request = false,
-        env_file = ".env",
-        custom_dynamic_variables = {},
-        yank_dry_run = true,
-      }
-    end,
-  },
-  -- {
-  --   "whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").setup()
-  --   end,
-  -- },
+  "rest-nvim/rest.nvim",
   {
     "Pocco81/auto-save.nvim",
     config = function()
@@ -161,27 +107,10 @@ lvim.plugins = {
     },
   },
   "HiPhish/nvim-ts-rainbow2",
-  -- {
-  --   dir = "/Users/chris/Repos/bookmark.nvim",
-  -- },
-  -- "andymass/vim-matchup",
-  "MunifTanjim/nui.nvim",
-  "lunarvim/synthwave84.nvim",
-  {
-    "kndndrj/nvim-dbee",
-    build = function()
-      require("dbee").install()
-    end,
-  },
-  "kkharji/sqlite.lua",
-  { url = "git@github.com:ChristianChiarulli/bookmark.nvim.git" },
-  { url = "git@github.com:ChristianChiarulli/onedark.nvim.git" },
-  { url = "git@github.com:LunarVim/primer.nvim.git" },
-  -- { "christianchiarulli/tabnine-nvim", build = "./dl_binaries.sh", branch = "suggestion_hl_group" },
   "stevearc/dressing.nvim",
   -- "AckslD/swenv.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
-  -- "nvim-treesitter/playground",
+  "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-textobjects",
   -- "mfussenegger/nvim-jdtls",
   "opalmay/vim-smoothie",
@@ -194,7 +123,6 @@ lvim.plugins = {
       })
     end,
   },
-  -- "windwp/nvim-ts-autotag",
   "kylechui/nvim-surround",
   -- "christianchiarulli/harpoon",
   -- "MattesGroeger/vim-bookmarks",
@@ -211,28 +139,15 @@ lvim.plugins = {
     "lvimuser/lsp-inlayhints.nvim",
     branch = "anticonceal",
   },
-  "lunarvim/darkplus.nvim",
   "kevinhwang91/nvim-bqf",
   "is0n/jaq-nvim",
   "nacro90/numb.nvim",
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",       -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",      -- optional
-      "ibhagwan/fzf-lua",            -- optional
-    },
-    config = true
-  },
   "sindrets/diffview.nvim",
   "simrat39/rust-tools.nvim",
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
   "jose-elias-alvarez/typescript.nvim",
   "mxsdev/nvim-dap-vscode-js",
-  "petertriho/nvim-scrollbar",
-  -- "renerocksai/calendar-vim",
   {
     "saecki/crates.nvim",
     version = "v0.3.0",

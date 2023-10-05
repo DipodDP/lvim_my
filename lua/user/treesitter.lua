@@ -15,6 +15,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
   "python",
   "javascript",
+  "go",
 }
 
 lvim.builtin.treesitter.rainbow = {

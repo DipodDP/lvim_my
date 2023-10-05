@@ -6,13 +6,14 @@ end
 neorg.setup {
   load = {
     ["core.defaults"] = {},
+    ["core.summary"] = {},
     ["core.dirman"] = {
       config = {
         workspaces = {
           home = "~/neorg/",
           notes = "~/neorg/notes",
           books = "~/neorg/books",
-          journal = "~/neorg/journal",
+          fluencypass = "~/neorg/fluencypass",
         },
         default_workspace = "home",
       },

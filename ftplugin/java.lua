@@ -20,14 +20,16 @@ local capabilities = require("lvim.lsp").common_capabilities()
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+
 -- Setup Testing and Debugging
 local bundles = {}
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
-vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "packages/java-test/extension/server/*.jar"), "\n"))
+-- vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "packages/java-test/extension/server/*.jar",true), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob("/home/moreira/.local/share/nvim/vscode-java-test/server/*.jar",true), "\n"))
 vim.list_extend(
   bundles,
   vim.split(
-    vim.fn.glob(mason_path .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
+    vim.fn.glob(mason_path .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",true),
     "\n"
   )
 )
@@ -36,7 +38,6 @@ lvim.builtin.dap.active = true
 local config = {
   cmd = {
     "java",
-    "-DURL=jdbc:postgresql://localhost:5432/algafood",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -48,11 +49,11 @@ local config = {
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
-    "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+    "-javaagent:" .. mason_path .. "/packages/jdtls/lombok.jar",
     "-jar",
-    vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+    vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration",
-    home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. os_config,
+    mason_path .. "/packages/jdtls/config_" .. os_config,
     "-data",
     workspace_dir,
   },
@@ -67,16 +68,12 @@ local config = {
         updateBuildConfiguration = "interactive",
         runtimes = {
           {
-            name = "JavaSE-11",
-            path = "~/.asdf/installs/java/openjdk-11.0.2",
-          },
-          {
             name = "JavaSE-17",
             path = "~/.asdf/installs/java/openjdk-17.0.2",
           },
           {
             name = "JavaSE-19",
-            path = "~/.asdf/installs/java/openjdk-19.0.2/",
+            path = "~/.asdf/installs/java/openjdk-19.0.2",
           },
         },
       },
@@ -100,8 +97,8 @@ local config = {
       format = {
         enabled = true,
         settings = {
-          profile = "GoogleStyle",
-          url = home .. "/.config/lvim/.java-google-formatter.xml",
+          -- profile = "GoogleStyle",
+          -- url = home .. "/.config/lvim/.java-google-formatter.xml",
         },
       },
     },
@@ -115,7 +112,8 @@ local config = {
 
 config["on_attach"] = function(client, bufnr)
   local _, _ = pcall(vim.lsp.codelens.refresh)
-  require("jdtls").setup_dap { hotcodereplace = "auto" }
+  require("jdtls").setup_dap { hotcodereplace = "auto"}
+  require("jdtls.tests")
   require("jdtls.dap").setup_dap_main_class_configs()
   require("lvim.lsp").on_attach(client, bufnr)
   local status_ok, jdtls_dap = pcall(require, "jdtls.dap")
@@ -170,6 +168,8 @@ local mappings = {
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
     u = { "<Cmd>lua require'jdtls'.update_project_config()<CR>", "Update Config" },
+    g = { "<Cmd>lua require'jdtls.tests'.goto_subject()<CR>", "Goto subject" },
+
   },
 }
 

@@ -215,7 +215,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.api.nvim_create_autocmd(
-    { "BufRead", },
-    { pattern = { "*.py" }, command = "MagmaInit" }
-)

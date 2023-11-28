@@ -1,6 +1,16 @@
 -- Additional Plugins
 
 lvim.plugins = {
+  {
+    "vinnymeller/swagger-preview.nvim",
+    build = "npm install -g swagger-ui-watcher",
+  },
+  {
+    'dccsillag/magma-nvim',
+    build = ':UpdateRemotePlugins'
+  },
+  "metakirby5/codi.vim",
+  "jackMort/ChatGPT.nvim",
   "onsails/lspkind.nvim",
   {
     url = "https://gitlab.com/itaranto/plantuml.nvim",
@@ -14,7 +24,7 @@ lvim.plugins = {
             dark_mode = true,
           },
         },
-        render_on_write = false,
+        render_on_write = true,
       }
     end,
   },
@@ -52,20 +62,20 @@ lvim.plugins = {
       require("dotenv").setup()
     end,
   },
-  {
-    "kristijanhusak/vim-dadbod-completion",
-    event = "InsertEnter",
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        desc = "dadbod completion",
-        group = vim.api.nvim_create_augroup("dadbod_cmp", { clear = true }),
-        pattern = { "sql", "mysql", "plsql" },
-        callback = function()
-          require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
-        end,
-      })
-    end,
-  },
+  -- {
+  --   "kristijanhusak/vim-dadbod-completion",
+  --   event = "InsertEnter",
+  --   init = function()
+  --     vim.api.nvim_create_autocmd("FileType", {
+  --       desc = "dadbod completion",
+  --       group = vim.api.nvim_create_augroup("dadbod_cmp", { clear = true }),
+  --       pattern = { "sql", "mysql", "plsql" },
+  --       callback = function()
+  --         require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
+  --       end,
+  --     })
+  --   end,
+  -- },
   { "tpope/vim-dadbod" },
   { "kristijanhusak/vim-dadbod-ui" },
   "rest-nvim/rest.nvim",

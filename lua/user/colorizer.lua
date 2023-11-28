@@ -13,6 +13,7 @@ colorizer.setup {
     "html",
     "astro",
     "lua",
+    "toml",
   },
   user_default_options = {
     names = false,

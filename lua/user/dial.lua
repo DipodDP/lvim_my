@@ -55,7 +55,6 @@ dial_config.augends:register_group {
     augend.semver.alias.semver
   },
 }
-
 local map = require "dial.map"
 
 -- change augends in VISUAL mode

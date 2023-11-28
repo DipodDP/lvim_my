@@ -7,16 +7,16 @@
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd({"FileType"},{
-  pattern = {
-    "sql",
-    "mysql",
-    "psql"
-  },
-    callback = function ()
-      require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
-    end
-  })
+-- vim.api.nvim_create_autocmd({"FileType"},{
+--   pattern = {
+--     "sql",
+--     "mysql",
+--     "psql"
+--   },
+--     callback = function ()
+--       require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+--     end
+--   })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()

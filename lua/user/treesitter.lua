@@ -12,6 +12,8 @@
 -- end
 
 lvim.builtin.treesitter.ensure_installed = {
+  "dockerfile",
+  "sql",
   "java",
   "python",
   "javascript",

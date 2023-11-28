@@ -35,15 +35,6 @@ formatters.setup { { name = "black" } }
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup { { command = "flake8", args = { "--ignore=E203,E501" }, filetypes = { "python" } } }
 
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
 -- setup debug adapter
 lvim.builtin.dap.active = true
 local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
@@ -67,11 +58,44 @@ require("neotest").setup {
   },
 }
 
+
+
+local opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
 local mappings = {
-  C = {
+  j = {
     name = "Python",
     c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+    m = { "<cmd>MagmaInit<cr>", "Init" },
+    d = { "<cmd>MagmaDeinit<cr>", "deinit" },
+    e = { "<cmd>MagmaEvaluateLine<cr>", "Evaluate" },
+    r = { "<cmd>MagmaReevaluateCell<cr>", "Reevaluate" },
+  },
+}
+local vopts = {
+  mode = "v", -- VISUAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local vmappings = {
+  j = {
+    name = "Python",
+    e = { "<cmd>MagmaEvaluateVisual<cr>", "EvaluateVisual" },
   },
 }
 
 which_key.register(mappings, opts)
+which_key.register(vmappings, vopts)
+
+

@@ -47,5 +47,6 @@ lvim.builtin.cmp.sources[2].entry_filter = function(entry, ctx)
 end
 
 table.insert(lvim.builtin.cmp.sources, { name = "neorg" })
+table.insert(lvim.builtin.cmp.sources, { name = "sqlls" })
 table.insert(lvim.builtin.cmp.sources, { name = "nvim_lsp_signature_help" })
 

@@ -3,7 +3,6 @@ vim.diagnostic.config { virtual_text = true }
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   "clangd",
-  "dockerls",
   "gopls",
   "golangci_lint_ls",
   "jdtls",
@@ -12,8 +11,8 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   "taplo",
   "texlab",
   "tsserver",
-  "yamlls",
 })
+
 local capabilities = require("lvim.lsp").common_capabilities()
 require("typescript").setup {
   -- disable_commands = false, -- prevent the plugin from creating Vim commands
@@ -48,14 +47,10 @@ require("typescript").setup {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "stylua",   filetypes = { "lua" } },
+  { command = "yamlfmt",   filetypes = { "yaml" } },
   { command = "shfmt",    filetypes = { "sh", "zsh" } },
   { command = "prettier", filetypes = { "css", "javascript", "javascriptreact", "typescript", "typescriptreact" } },
 }
 
--- lvim.lsp.on_attach_callback = function(client, bufnr)
--- end
-
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "eslint_d", filetypes = { "javascript" } },
--- }
+require'lspconfig'.sqlls.setup{}
+-- require'lspconfig'.dockerls.setup{}

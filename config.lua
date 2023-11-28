@@ -1,4 +1,5 @@
 reload "user.dap"
+reload "user.chatgpt"
 reload "user.rest"
 reload "user.metals"
 reload "user.image"
@@ -41,7 +42,6 @@ reload "user.cmp"
 reload "nostr"
 reload "user.astro-tools"
 reload "user.matchup"
-reload "user.modicator"
 reload "user.dotenv"
 
 
@@ -65,5 +65,11 @@ vim.keymap.set('n', '<space>f', function()
   vim.lsp.buf.format { async = true }
 end)
 
-require'lspconfig'.csharp_ls.setup{}
+require 'lspconfig'.csharp_ls.setup {}
 
+require("swagger-preview").setup({
+    -- The port to run the preview server on
+    port = 8000,
+    -- The host to run the preview server on
+    host = "localhost",
+})

@@ -168,7 +168,8 @@ local mappings = {
     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
     u = { "<Cmd>lua require'jdtls'.update_project_config()<CR>", "Update Config" },
-    g = { "<Cmd>lua require'jdtls.tests'.goto_subject()<CR>", "Goto subject" },
+    g = { "<Cmd>lua require'jdtls.tests'.goto_subjects()<CR>", "Goto subject" },
+    G = { "<Cmd>lua require'jdtls.tests'.generate()<CR>", "Generate" },
 
   },
 }

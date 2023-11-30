@@ -6,7 +6,8 @@ lvim.builtin.alpha.dashboard.section.header.val = {
   "/_____/\\__,_/_/ /_/\\__,_/_/    |___/_/_/ /_/ /_/ ",
 }
 
-lvim.colorscheme = "tokyonight-night"
+lvim.colorscheme = "gruvbox"
+-- lvim.colorscheme = "kanagawa"
 lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.reload_config_on_save = false
@@ -19,15 +20,6 @@ lvim.builtin.breadcrumbs.active = true
 lvim.builtin.dap.active = true
 lvim.keys.term_mode = { ["<C-l>"] = false }
 lvim.builtin.dap.ui.auto_open = false
-
--- lvim.builtin.cmp.formatting = {
---     format = require("tailwindcss-colorizer-cmp").formatter
--- }
--- vim.g.netrw_browse_split = 0
--- vim.g.netrw_banner = 0
--- vim.g.netrw_winsize = 25
-
--- vim.g["test#strategy"] = "kitty"
 
 local options = {
   backup = false,                          -- creates a backup file

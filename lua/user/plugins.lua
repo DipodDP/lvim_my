@@ -1,6 +1,8 @@
 -- Additional Plugins
 
 lvim.plugins = {
+  "rebelot/kanagawa.nvim",
+  "ellisonleao/gruvbox.nvim",
   {
     "vinnymeller/swagger-preview.nvim",
     build = "npm install -g swagger-ui-watcher",

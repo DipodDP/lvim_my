@@ -61,8 +61,75 @@ end)
 require 'lspconfig'.csharp_ls.setup {}
 
 require("swagger-preview").setup({
-    -- The port to run the preview server on
-    port = 8000,
-    -- The host to run the preview server on
-    host = "localhost",
+  -- The port to run the preview server on
+  port = 8000,
+  -- The host to run the preview server on
+  host = "localhost",
+})
+
+-- require("transparent").setup({ -- Optional, you don't have to run setup.
+--   groups = {                   -- table: default groups
+--     'lualine_c_replace', 'lualine_c_visual', 'lualine_c_insert', 'lualine_c_normal',
+--     'Float', 'NormalFloat',
+--     'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+--     'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+--     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+--     'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+--     'EndOfBuffer',
+--   },
+--   extra_groups = {},   -- table: additional groups that should be cleared
+--   exclude_groups = {}, -- table: groups you don't want to clear
+-- })
+
+
+
+-- Default options:
+require("gruvbox").setup({
+  terminal_colors = true, -- add neovim terminal colors
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    emphasis = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "",  -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {
+    CursorLine = {
+      blend = vim.o.pumblend,
+      bg = "NONE",
+    },
+    CursorLineNr = {
+      blend = vim.o.pumblend,
+      bg = "NONE",
+    },
+    lualine_c_replace = {
+      -- guibg = "NONE",
+    },
+    lualine_c_visual = {
+      -- guibg = "NONE",
+    },
+    lualine_c_normal = {
+      -- guibg = "NONE",
+    },
+    lualine_c_insert = {
+      -- guibg = "NONE",
+    },
+    Pmenu = {
+      blend = 0,
+      bg = "NONE"
+    }
+  },
+  dim_inactive = false,
+  transparent_mode = true,
 })

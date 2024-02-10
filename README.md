@@ -46,6 +46,13 @@ Next we need to install python support (node is optional)
 
 - [A nerd font](https://github.com/ryanoasis/nerd-fonts)
 
+- Curl Download
+
+```sh
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
+```
+
 - [codicon](https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf)
 - [An emoji font](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf)
 

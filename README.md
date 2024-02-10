@@ -46,7 +46,7 @@ Next we need to install python support (node is optional)
 
 - [A nerd font](https://github.com/ryanoasis/nerd-fonts)
 
-- Curl Download
+Curl Download
 
 ```sh
 mkdir -p ~/.local/share/fonts

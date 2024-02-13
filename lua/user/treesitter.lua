@@ -24,14 +24,14 @@ lvim.builtin.treesitter.rainbow = {
   },
   strategy = require("ts-rainbow").strategy.global,
   hlgroups = {
-    -- "TSRainbowRed",
+    "TSRainbowRed",
     "TSRainbowBlue",
     -- "TSRainbowOrange",
     -- "TSRainbowCoral",
     "TSRainbowPink",
     "TSRainbowYellow",
     -- "TSRainbowViolet",
-    -- "TSRainbowGreen",
+    "TSRainbowGreen",
   },
 }
 

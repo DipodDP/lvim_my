@@ -91,11 +91,11 @@ lvim.plugins = {
     "0x100101/lab.nvim",
     build = "cd js && npm ci",
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  -- },
   {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
@@ -123,8 +123,14 @@ lvim.plugins = {
   -- "rcarriga/nvim-notify",
 
   -- https://github.com/jose-elias-alvarez/typescript.nvim
-  -- "rmagatti/auto-session",
-  -- "rmagatti/session-lens"
+  "rmagatti/auto-session",
+  "rmagatti/session-lens",
   -- "christianchiarulli/nvim-ts-rainbow",
   -- "karb94/neoscroll.nvim",
+  "max397574/better-escape.nvim",
+  "ojroques/nvim-osc52",
+  {
+    "gbprod/yanky.nvim",
+    event = "BufEnter",
+  },
 }

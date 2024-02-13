@@ -69,7 +69,7 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<Down>"] = actions.move_selection_next,
     ["<Up>"] = actions.move_selection_previous,
 
-    ["<CR>"] = actions.select_default,
+    -- ["<CR>"] = actions.select_default,
     ["<C-s>"] = actions.select_horizontal,
     ["<C-v>"] = actions.select_vertical,
     ["<C-t>"] = actions.select_tab,

@@ -7,7 +7,7 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
-keymap("n", "<C-i>", "<C-i>", opts)
+-- keymap("n", "<C-i>", "<C-i>", opts)
 
 -- Normal --
 -- Better window navigation
@@ -22,6 +22,9 @@ keymap("n", "<Up>", "<cmd>BookmarkPrev<cr>", opts)
 keymap("n", "<Right>", "<cmd>FilemarkNext<cr>", opts)
 keymap("n", "<Left>", "<cmd>FilemarkPrev<cr>", opts)
 
+keymap("n", "[b", "<cmd>bprevious<cr>", opts)
+keymap("n", "]b", "<cmd>bnext<cr>", opts)
+
 function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
   vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
@@ -32,7 +35,6 @@ end
 vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
 -- Tabs --
--- keymap("n", "\\", ":tabnew %<cr>", opts)
 -- keymap("n", "\\", ":tabnew %<cr>", opts)
 -- keymap("n", "<s-\\>", ":tabclose<cr>", opts)
 -- keymap("n", "<s-\\>", ":tabonly<cr>", opts)
@@ -45,7 +47,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 keymap("n", "<c-j>", "<c-d>", opts)
 keymap("n", "<c-k>", "<c-u>", opts)
-keymap("n", "<c-m>", "<s-m>", opts)
+keymap("n", "<c-c>", "<s-m>", opts)
 
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
@@ -62,6 +64,13 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "p", [["_dP]])
 -- keymap("v", "p", '"_dp', opts)
 -- keymap("v", "P", '"_dP', opts)
+
+-- Cut selected
+keymap("v", "x", "ygvx")
+keymap("v", "c", "ygvc")
+
+-- Delete in blackhole register
+keymap("v", "DD", '"_d')
 
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
 

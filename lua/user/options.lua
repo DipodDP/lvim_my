@@ -12,23 +12,22 @@ lvim.colorscheme = "primer_dark"
 lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.reload_config_on_save = false
-lvim.builtin.illuminate.active = false
+lvim.builtin.illuminate.active = true
 lvim.builtin.bufferline.active = false
 lvim.builtin.terminal.persist_mode = false
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.dap.active = true
 lvim.keys.term_mode = { ["<C-l>"] = false }
 
 
--- lvim.builtin.cmp.formatting = {
---     format = require("tailwindcss-colorizer-cmp").formatter
--- }
+lvim.builtin.cmp.formatting = {
+    format = require("tailwindcss-colorizer-cmp").formatter
+}
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
-vim.opt.showtabline = 0
 
 local options = {
   backup = false, -- creates a backup file
@@ -64,12 +63,12 @@ local options = {
   relativenumber = true, -- set relative numbered lines
   numberwidth = 4, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  wrap = false, -- display lines as one long line
-  scrolloff = 0,
+  wrap = true, -- display lines as one long line
+  scrolloff = 3,
   sidescrolloff = 8,
   guifont = "monospace:h17", -- the font used in graphical neovim applications
   title = true,
-  titleold = vim.split(os.getenv("SHELL") or "", "/")[3] ,
+  titleold = vim.split(os.getenv("SHELL") or "", "/")[3],
   -- colorcolumn = "80",
   -- colorcolumn = "120",
 }

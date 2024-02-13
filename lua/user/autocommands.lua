@@ -87,6 +87,14 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --   end,
 -- })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.txt", "*.md", "*.tex" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown" },
   callback = function()
@@ -202,4 +210,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- client.server_capabilities.semanticTokensProvider = nil
     -- print(vim.inspect(client))
   end,
+})
+
+-- perform osc52 yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'y' or vim.v.event.operator == 'c' then
+      require('osc52').copy_register('+')
+    end
+  end
+})
+
+-- prevent overwriting yank by delete
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'd' then
+      vim.fn.setreg('"', vim.fn.getreg('0'))
+    end
+  end
 })

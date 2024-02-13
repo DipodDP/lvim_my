@@ -7,7 +7,7 @@ lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>AerialToggle!<cr>", "Outline" }
 lvim.builtin.which_key.mappings["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" }
 lvim.builtin.which_key.mappings["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" }
--- lvim.builtin.which_key.mappings["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
+lvim.builtin.which_key.mappings["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["gy"] = "Link"
 lvim.builtin.which_key.mappings["r"] = {
   name = "Replace",
@@ -137,16 +137,16 @@ lvim.builtin.which_key.mappings["t"] = {
   o = { "<cmd>tabonly<cr>", "Only Tab" },
 }
 -- lvim.builtin.cmp.enabled = false
--- lvim.builtin.which_key.mappings["o"] = {
---   name = "Options",
---   c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
---   C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
---   -- w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
---   -- r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
---   -- l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
---   -- s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
---   -- t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
--- }
+lvim.builtin.which_key.mappings["o"] = {
+  name = "Options",
+  c = { "<cmd>lua lvim.builtin.cmp.active = false<cr>", "Completion off" },
+  C = { "<cmd>lua lvim.builtin.cmp.active = true<cr>", "Completion on" },
+  w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
+  r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
+  l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
+  s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
+  t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+}
 
 lvim.builtin.which_key.mappings["n"] = {
   name = "Notes",
@@ -159,27 +159,14 @@ lvim.builtin.which_key.mappings["n"] = {
   t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
 }
 
-lvim.builtin.which_key.mappings[";"] = nil
+-- lvim.builtin.which_key.mappings[";"] = nil
 -- lvim.builtin.which_key.mappings["c"] = nil
-lvim.builtin.which_key.mappings["L"] = nil
-lvim.builtin.which_key.mappings["s"] = nil
-lvim.builtin.which_key.mappings["w"] = nil
+-- lvim.builtin.which_key.mappings["L"] = nil
+-- lvim.builtin.which_key.mappings["s"] = nil
+-- lvim.builtin.which_key.mappings["w"] = nil
 
-local m_opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "m",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-  return
-end
-
-local m_mappings = {
+lvim.builtin.which_key.mappings["m"] = {
+  name = "Bookmarks",
   m = { "<cmd>BookmarkToggle<cr>", "Toggle" },
   j = { "<cmd>BookmarkNext<cr>", "Next" },
   k = { "<cmd>BookmarkPrev<cr>", "Prev" },
@@ -198,4 +185,21 @@ local m_mappings = {
   -- [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 }
 
-which_key.register(m_mappings, m_opts)
+-- Nvim-tree
+lvim.builtin.which_key.mappings["E"] = { "<cmd>NvimTreeFocus<cr>", "Focus in explorer" }
+
+-- local m_opts = {
+--   mode = "n", -- NORMAL mode
+--   prefix = "m",
+--   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+--   silent = true, -- use `silent` when creating keymaps
+--   noremap = true, -- use `noremap` when creating keymaps
+--   nowait = true, -- use `nowait` when creating keymaps
+-- }
+
+-- local status_ok, which_key = pcall(require, "which-key")
+-- if not status_ok then
+--   return
+-- end
+
+-- which_key.register(m_mappings, m_opts)

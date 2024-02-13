@@ -14,6 +14,7 @@ neoscroll.setup {
   -- easing_function = nil, -- Default easing function
   -- pre_hook = nil, -- Function to run before the scrolling animation starts
   -- post_hook = nil, -- Function to run after the scrolling animation ends
+  performance_mode = false,    -- Disable "Performance Mode" on all buffers.
 }
 
 local t = {}

@@ -26,6 +26,11 @@ lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_closed = ""
 -- lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.symlink = ""
 lvim.builtin.nvimtree.setup.view.centralize_selection = true
 -- lvim.builtin.nvimtree.setup.view.cursor = false
+-- lvim.builtin.nvimtree.setup.hijack_netrw = true
+-- lvim.builtin.nvimtree.setup.hijack_directories = {
+--   auto_open = true,
+--   enable =  true,
+-- }
 
 -- vim.api.nvim_create_autocmd({ 'WinEnter', 'BufWinEnter' }, {
 --   pattern = 'NvimTree*',

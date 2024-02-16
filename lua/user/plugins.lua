@@ -3,41 +3,67 @@ lvim.plugins = {
   {
     "mawkler/modicator.nvim",
     event = "ColorScheme",
+    dependencies = { url = "git@github.com:LunarVim/primer.nvim.git" }, -- Add your colorscheme plugin here
+    init = function()
+      -- These are required for Modicator to work
+      vim.o.cursorline = true
+      vim.o.number = true
+      vim.o.termguicolors = true
+    end,
+    opts = {
+      show_warnings = false,
+      highlights = {
+        -- Default options for bold/italic
+        defaults = {
+          bold = true,
+          italic = false,
+        },
+      },
+      integration = {
+        lualine = {
+          enabled = true,
+          -- Letter of lualine section to use (if `nil`, gets detected automatically)
+          mode_section = nil,
+          -- Whether to use lualine's mode highlight's foreground or background
+          highlight = 'bg',
+        },
+      },
+    },
   },
   "HiPhish/nvim-ts-rainbow2",
   -- {
   --   dir = "/Users/chris/Repos/bookmark.nvim",
   -- },
-  "andymass/vim-matchup",
-  "lunarvim/synthwave84.nvim",
-  {
-    "kndndrj/nvim-dbee",
-    build = function()
-      require("dbee").install()
-    end,
-  },
+  -- "andymass/vim-matchup",
+  -- "lunarvim/synthwave84.nvim",
+  -- {
+  --   "kndndrj/nvim-dbee",
+  --   build = function()
+  --     require("dbee").install()
+  --   end,
+  -- },
   "kkharji/sqlite.lua",
   { url = "git@github.com:ChristianChiarulli/bookmark.nvim.git" },
   { url = "git@github.com:ChristianChiarulli/onedark.nvim.git" },
   { url = "git@github.com:LunarVim/primer.nvim.git" },
   -- { "christianchiarulli/tabnine-nvim", build = "./dl_binaries.sh", branch = "suggestion_hl_group" },
   "stevearc/dressing.nvim",
-  "AckslD/swenv.nvim",
+  -- "AckslD/swenv.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
   -- "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  "mfussenegger/nvim-jdtls",
+  -- "mfussenegger/nvim-jdtls",
   "opalmay/vim-smoothie",
-  {
-    "j-hui/fidget.nvim",
-    branch = "legacy",
-  },
+  -- {
+  --   "j-hui/fidget.nvim",
+  --   branch = "legacy",
+  -- },
   "windwp/nvim-ts-autotag",
   "kylechui/nvim-surround",
-  "christianchiarulli/harpoon",
+  -- "christianchiarulli/harpoon",
   -- "MattesGroeger/vim-bookmarks",
   "NvChad/nvim-colorizer.lua",
-  "moll/vim-bbye",
+  -- "moll/vim-bbye",
   "folke/todo-comments.nvim",
   "windwp/nvim-spectre",
   "f-person/git-blame.nvim",
@@ -50,9 +76,9 @@ lvim.plugins = {
     branch = "anticonceal",
   },
   "lunarvim/darkplus.nvim",
-  "kevinhwang91/nvim-bqf",
-  "is0n/jaq-nvim",
-  "nacro90/numb.nvim",
+  -- "kevinhwang91/nvim-bqf",
+  -- "is0n/jaq-nvim",
+  -- "nacro90/numb.nvim",
   "neogitorg/neogit",
   "sindrets/diffview.nvim",
   "simrat39/rust-tools.nvim",
@@ -75,8 +101,8 @@ lvim.plugins = {
       }
     end,
   },
-  "MunifTanjim/nui.nvim",
-  "jackMort/ChatGPT.nvim",
+  -- "MunifTanjim/nui.nvim",
+  -- "jackMort/ChatGPT.nvim",
   {
     "jinh0/eyeliner.nvim",
     config = function()
@@ -85,7 +111,7 @@ lvim.plugins = {
       }
     end,
   },
-  { "christianchiarulli/telescope-tabs", branch = "chris" },
+  -- { "christianchiarulli/telescope-tabs", branch = "chris" },
   "monaqa/dial.nvim",
   {
     "0x100101/lab.nvim",
@@ -96,21 +122,21 @@ lvim.plugins = {
   --   cmd = "Copilot",
   --   event = "InsertEnter",
   -- },
-  {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end,
+  -- },
   -- {
   --   "tzachar/cmp-tabnine",
   --   event = "BufRead",
   --   build = "./install.sh",
   -- },
 
-  "MunifTanjim/nui.nvim",
-  "Bryley/neoai.nvim",
+  -- "MunifTanjim/nui.nvim",
+  -- "Bryley/neoai.nvim",
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
@@ -127,10 +153,16 @@ lvim.plugins = {
   "rmagatti/session-lens",
   -- "christianchiarulli/nvim-ts-rainbow",
   -- "karb94/neoscroll.nvim",
-  "max397574/better-escape.nvim",
-  "ojroques/nvim-osc52",
+  {
+    "max397574/better-escape.nvim",
+    event = "BufRead",
+  },
+  {
+    "ojroques/nvim-osc52",
+    event = "BufRead",
+  },
   {
     "gbprod/yanky.nvim",
-    event = "BufEnter",
+    event = "BufRead",
   },
 }

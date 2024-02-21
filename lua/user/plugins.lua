@@ -30,10 +30,10 @@ lvim.plugins = {
       }
     end,
   },
-  {
-    "3rd/image.nvim",
-    rocks = { "magick" },
-  },
+  -- {
+  --   "3rd/image.nvim",
+  --   rocks = { "magick" },
+  -- },
   {
     "folke/trouble.nvim",
     config = function()

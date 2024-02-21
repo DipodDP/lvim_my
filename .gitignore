@@ -1,5 +1,14 @@
+# Lazy spesific files
+lazy-lock.json 
+
+
 # Compiled Lua sources
 luac.out
+.java-debug
+.vscode-java-test
+
+# Logs
+.nvimlog
 
 # luarocks build files
 *.src.rock

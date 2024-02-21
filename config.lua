@@ -1,9 +1,9 @@
 reload "user.dap"
-reload "user.chatgpt"
+-- reload "user.chatgpt"
 reload "user.rest"
 reload "user.metals"
 reload "user.image"
-reload "user.neorg"
+-- reload "user.neorg"
 reload "user.plugins"
 reload "user.options"
 reload "user.keymaps"
@@ -44,7 +44,7 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
+-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
 vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder)
 vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder)
 vim.keymap.set('n', '<space>wl', function()

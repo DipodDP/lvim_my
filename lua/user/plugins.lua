@@ -1,6 +1,36 @@
 -- Additional Plugins
 
 lvim.plugins = {
+  {
+    "mawkler/modicator.nvim",
+    event = "ColorScheme",
+    dependencies = { url = "git@github.com:LunarVim/primer.nvim.git" }, -- Add your colorscheme plugin here
+    init = function()
+      -- These are required for Modicator to work
+      vim.o.cursorline = true
+      vim.o.number = true
+      vim.o.termguicolors = true
+    end,
+    opts = {
+      show_warnings = false,
+      highlights = {
+        -- Default options for bold/italic
+        defaults = {
+          bold = true,
+          italic = false,
+        },
+      },
+      integration = {
+        lualine = {
+          enabled = true,
+          -- Letter of lualine section to use (if `nil`, gets detected automatically)
+          mode_section = nil,
+          -- Whether to use lualine's mode highlight's foreground or background
+          highlight = 'bg',
+        },
+      },
+    },
+  },
   "rebelot/kanagawa.nvim",
   "ellisonleao/gruvbox.nvim",
   {
@@ -30,10 +60,10 @@ lvim.plugins = {
       }
     end,
   },
-  {
-    "3rd/image.nvim",
-    rocks = { "magick" },
-  },
+  -- {
+  --   "3rd/image.nvim",
+  --   rocks = { "magick" },
+  -- },
   {
     "folke/trouble.nvim",
     config = function()
@@ -58,12 +88,7 @@ lvim.plugins = {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers", -- This is the important bit!
   },
-  {
-    "ellisonleao/dotenv.nvim",
-    config = function()
-      require("dotenv").setup()
-    end,
-  },
+  "ellisonleao/dotenv.nvim",
   -- {
   --   "kristijanhusak/vim-dadbod-completion",
   --   event = "InsertEnter",

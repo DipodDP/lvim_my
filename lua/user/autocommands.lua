@@ -223,3 +223,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- perform osc52 yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'y' or vim.v.event.operator == 'c' then
+      require('osc52').copy_register('+')
+    end
+  end
+})
+
+-- prevent overwriting yank by delete
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'd' then
+      vim.fn.setreg('"', vim.fn.getreg('0'))
+    end
+  end
+})
+

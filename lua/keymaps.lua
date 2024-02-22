@@ -96,6 +96,24 @@ vim.api.nvim_set_keymap(
   opts
 )
 
+-- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
+-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+-- vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+-- vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help)
+keymap('n', '<space>wa', vim.lsp.buf.add_workspace_folder)
+keymap('n', '<space>wr', vim.lsp.buf.remove_workspace_folder)
+keymap('n', '<space>wl', function()
+  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end)
+keymap('n', '<space>D', vim.lsp.buf.type_definition)
+keymap('n', '<space>rn', vim.lsp.buf.rename)
+keymap({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action)
+keymap('n', 'gr', vim.lsp.buf.references)
+keymap('n', '<space>f', function()
+  vim.lsp.buf.format { async = true }
+end)
+
 vim.cmd [[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))

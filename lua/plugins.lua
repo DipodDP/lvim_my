@@ -1,38 +1,63 @@
 -- Additional Plugins
 
 lvim.plugins = {
+  "lunarvim/darkplus.nvim",
+  -- "folke/tokyonight.nvim",
+  -- "rebelot/kanagawa.nvim",
   {
-    "mawkler/modicator.nvim",
-    event = "ColorScheme",
-    dependencies = { url = "git@github.com:LunarVim/primer.nvim.git" }, -- Add your colorscheme plugin here
-    init = function()
-      -- These are required for Modicator to work
-      vim.o.cursorline = true
-      vim.o.number = true
-      vim.o.termguicolors = true
-    end,
-    opts = {
-      show_warnings = false,
-      highlights = {
-        -- Default options for bold/italic
-        defaults = {
-          bold = true,
-          italic = false,
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = true,
+          emphasis = true,
+          comments = true,
+          operators = false,
+          folds = true,
         },
-      },
-      integration = {
-        lualine = {
-          enabled = true,
-          -- Letter of lualine section to use (if `nil`, gets detected automatically)
-          mode_section = nil,
-          -- Whether to use lualine's mode highlight's foreground or background
-          highlight = 'bg',
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        contrast = "", -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {
+          CursorLine = {
+            blend = vim.o.pumblend,
+            bg = "NONE",
+          },
+          CursorLineNr = {
+            blend = vim.o.pumblend,
+            bg = "NONE",
+          },
+          lualine_c_replace = {
+            -- guibg = "NONE",
+          },
+          lualine_c_visual = {
+            -- guibg = "NONE",
+          },
+          lualine_c_normal = {
+            -- guibg = "NONE",
+          },
+          lualine_c_insert = {
+            -- guibg = "NONE",
+          },
+          Pmenu = {
+            blend = 0,
+            bg = "NONE"
+          }
         },
-      },
-    },
+        dim_inactive = false,
+        transparent_mode = true,
+      })
+    end
   },
-  "rebelot/kanagawa.nvim",
-  "ellisonleao/gruvbox.nvim",
   {
     "vinnymeller/swagger-preview.nvim",
     build = "npm install -g swagger-ui-watcher",
@@ -103,8 +128,8 @@ lvim.plugins = {
   --     })
   --   end,
   -- },
-  { "tpope/vim-dadbod" },
-  { "kristijanhusak/vim-dadbod-ui" },
+  -- { "tpope/vim-dadbod" },
+  -- { "kristijanhusak/vim-dadbod-ui" },
   "rest-nvim/rest.nvim",
   {
     "Pocco81/auto-save.nvim",
@@ -112,7 +137,6 @@ lvim.plugins = {
       require("auto-save").setup()
     end,
   },
-  "folke/tokyonight.nvim",
   {
     "mawkler/modicator.nvim",
     event = "ColorScheme",
@@ -144,6 +168,22 @@ lvim.plugins = {
     },
   },
   "HiPhish/nvim-ts-rainbow2",
+  -- {
+  --   dir = "/Users/chris/Repos/bookmark.nvim",
+  -- },
+  -- "andymass/vim-matchup",
+  -- "lunarvim/synthwave84.nvim",
+  -- {
+  --   "kndndrj/nvim-dbee",
+  --   build = function()
+  --     require("dbee").install()
+  --   end,
+  -- },
+  "kkharji/sqlite.lua",
+  { url = "git@github.com:ChristianChiarulli/bookmark.nvim.git" },
+  { url = "git@github.com:ChristianChiarulli/onedark.nvim.git" },
+  { url = "git@github.com:LunarVim/primer.nvim.git" },
+  -- { "christianchiarulli/tabnine-nvim", build = "./dl_binaries.sh", branch = "suggestion_hl_group" },
   "stevearc/dressing.nvim",
   -- "AckslD/swenv.nvim",
   "roobert/tailwindcss-colorizer-cmp.nvim",
@@ -176,18 +216,22 @@ lvim.plugins = {
     "lvimuser/lsp-inlayhints.nvim",
     branch = "anticonceal",
   },
-  "kevinhwang91/nvim-bqf",
-  "is0n/jaq-nvim",
-  "nacro90/numb.nvim",
+  -- "kevinhwang91/nvim-bqf",
+  -- "is0n/jaq-nvim",
+  -- "nacro90/numb.nvim",
+  "neogitorg/neogit",
   "sindrets/diffview.nvim",
   "simrat39/rust-tools.nvim",
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
   "jose-elias-alvarez/typescript.nvim",
   "mxsdev/nvim-dap-vscode-js",
+  "petertriho/nvim-scrollbar",
+  -- "renerocksai/calendar-vim",
   {
     "saecki/crates.nvim",
     version = "v0.3.0",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("crates").setup {
         null_ls = {
@@ -234,7 +278,6 @@ lvim.plugins = {
   -- "MunifTanjim/nui.nvim",
   -- "Bryley/neoai.nvim",
   "mfussenegger/nvim-dap-python",
-  "nvim-neotest/neotest",
   "andy-bell101/neotest-java",
   "nvim-neotest/neotest-go",
   "nvim-neotest/neotest-python",

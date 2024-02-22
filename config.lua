@@ -1,15 +1,36 @@
+--****************************************************************************--
+--*                               [init.lua]                                 *--
+--*                           [NVIM LAUNCH POINT]                            *--
+--*                     [Author/Credit - Tanweer Ashif]                      *--
+--* [LinkedIn/tanweerashif | GitHub/HacksPloiter | https://tanweerashif.com] *--
+--****************************************************************************--
+
+
+--================================-> START <-=================================--
+--                               File Imports                                 --
+--------------------------------------------------------------------------------
+-- require('keyconfig')        -- NVIM keymaps congis
+-- require('optconfig')        -- NVIM options configs
+-- require('themeplugtable')   -- NVIM Lazy configs
+-- require('themeplugconfig')  -- Installed theme and plugin configs
+
+-- Options
+-- =========================================
+reload "options"
+
+-- Autocommands
+-- =========================================
+reload "autocommands"
+
+-- Additional Keybindings
+-- =========================================
+reload "keymaps"
+
+-- Plugins Configuration
+-- =========================================
+
 reload "user.dap"
 reload "user.modicator"
--- reload "user.chatgpt"
-reload "user.rest"
-reload "user.metals"
-reload "user.image"
--- reload "user.neorg"
-reload "user.plugins"
-reload "user.options"
-reload "user.keymaps"
-reload "user.autocommands"
-
 reload "user.nvimtree"
 reload "user.lualine"
 reload "user.modicator"
@@ -17,9 +38,10 @@ reload "user.lsp"
 reload "user.smoothie"
 -- reload "user.harpoon"
 reload "user.webdev-icons"
-reload "use.cybu"
-reload "user.surround"
+reload "user.cybu"
 reload "user.neotest"
+reload "user.surround"
+reload "user.bookmark"
 reload "user.todo-comments"
 -- reload "user.jaq"
 -- reload "user.fidget"
@@ -34,18 +56,44 @@ reload "user.numb"
 reload "user.treesitter"
 -- reload "user.neogit"
 reload "user.colorizer"
-reload "user.lualine"
-reload "user.tabnine"
 reload "user.neoscroll"
-reload "user.whichkey"
+reload "user.dotenv"
+-- -- reload "user.tabnine"
+-- -- reload "user.copilot"
+-- -- reload "user.chatgpt"
 -- reload "user.neoai"
+reload "user.whichkey"
 reload "user.cmp"
 reload "nostr"
 reload "user.astro-tools"
-reload "user.matchup"
-reload "user.dotenv"
+-- reload "user.matchup"
+reload "user.betterescape"
+reload "user.yanky"
+reload "user.rest"
+reload "user.metals"
+-- reload "user.image"
+-- reload "user.neorg"
 
+-- Additional Plugins
+-- =========================================
+reload "plugins"
 
+--================================-> END <-===================================--
+
+--================================-> START <-=================================--
+--                        BACKUP INFO - WHAT TO BACKUP                        --
+--------------------------------------------------------------------------------
+-- $HOME/.config/nvim
+--     |
+--     |-- init.lua (✓)
+--     |
+--     |-- lua ---------
+--                     |------ keyconfig.lua (✓)
+--                     |------ optconfig.lua (✓)
+--                     |------ lazyconfig.lua (✓)
+--                     |------ themeplugconfig.lua (✓)
+--
+--================================-> END <-===================================--
 
 
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
@@ -88,56 +136,3 @@ require("swagger-preview").setup({
 --   extra_groups = {},   -- table: additional groups that should be cleared
 --   exclude_groups = {}, -- table: groups you don't want to clear
 -- })
-
-
-
--- Default options:
-require("gruvbox").setup({
-  terminal_colors = true, -- add neovim terminal colors
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = {
-    strings = true,
-    emphasis = true,
-    comments = true,
-    operators = false,
-    folds = true,
-  },
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "",  -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {
-    CursorLine = {
-      blend = vim.o.pumblend,
-      bg = "NONE",
-    },
-    CursorLineNr = {
-      blend = vim.o.pumblend,
-      bg = "NONE",
-    },
-    lualine_c_replace = {
-      -- guibg = "NONE",
-    },
-    lualine_c_visual = {
-      -- guibg = "NONE",
-    },
-    lualine_c_normal = {
-      -- guibg = "NONE",
-    },
-    lualine_c_insert = {
-      -- guibg = "NONE",
-    },
-    Pmenu = {
-      blend = 0,
-      bg = "NONE"
-    }
-  },
-  dim_inactive = false,
-  transparent_mode = true,
-})

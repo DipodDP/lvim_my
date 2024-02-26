@@ -270,42 +270,42 @@ M.config = function()
   lvim.builtin.gitsigns.opts.current_line_blame_formatter = " <author>, <author_time> · <summary>"
   lvim.builtin.gitsigns.opts.attach_to_untracked = false
 
-  -- IndentBlankline
-  -- =========================================
-  if lvim.builtin.indentlines.mine then
-    require("user.indent_blankline").setup()
-  elseif lvim.builtin.indentlines.active then
-    require("user.indent_blankline").config()
-  end
+  -- -- IndentBlankline
+  -- -- =========================================
+  -- if lvim.builtin.indentlines.mine then
+  --   require("user.indent_blankline").setup()
+  -- elseif lvim.builtin.indentlines.active then
+  --   require("user.indent_blankline").config()
+  -- end
 
-  -- LSP
-  -- =========================================
-  if lvim.builtin.go_programming.active then
-    require("lvim.lsp.manager").setup("golangci_lint_ls", {
-      on_init = require("lvim.lsp").common_on_init,
-      capabilities = require("lvim.lsp").common_capabilities(),
-    })
-  end
+  -- -- LSP
+  -- -- =========================================
+  -- if lvim.builtin.go_programming.active then
+  --   require("lvim.lsp.manager").setup("golangci_lint_ls", {
+  --     on_init = require("lvim.lsp").common_on_init,
+  --     capabilities = require("lvim.lsp").common_capabilities(),
+  --   })
+  -- end
 
-  lvim.lsp.buffer_mappings.normal_mode["ga"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" }
-  lvim.lsp.buffer_mappings.normal_mode["gA"] = {
-    "<cmd>lua if vim.bo.filetype == 'rust' then vim.cmd[[RustLsp hover actions]] else vim.lsp.codelens.run() end<CR>",
-    "CodeLens Action",
-  }
-  lvim.lsp.buffer_mappings.normal_mode["gt"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" }
-  lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Trouble lsp_references<CR>", "Goto References" }
-  lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Trouble lsp_definitions<CR>", "Goto Definition" }
-  lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Trouble lsp_implementations<CR>", "Goto Implementation" }
-  lvim.lsp.buffer_mappings.normal_mode["gp"] = {
-    function()
-      require("user.peek").Peek "definition"
-    end,
-    "Peek definition",
-  }
-  lvim.lsp.buffer_mappings.normal_mode["K"] = {
-    "<cmd>lua require('user.builtin').show_documentation()<CR>",
-    "Show Documentation",
-  }
+  -- lvim.lsp.buffer_mappings.normal_mode["ga"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" }
+  -- lvim.lsp.buffer_mappings.normal_mode["gA"] = {
+  --   "<cmd>lua if vim.bo.filetype == 'rust' then vim.cmd[[RustLsp hover actions]] else vim.lsp.codelens.run() end<CR>",
+  --   "CodeLens Action",
+  -- }
+  -- lvim.lsp.buffer_mappings.normal_mode["gt"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" }
+  -- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Trouble lsp_references<CR>", "Goto References" }
+  -- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Trouble lsp_definitions<CR>", "Goto Definition" }
+  -- lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Trouble lsp_implementations<CR>", "Goto Implementation" }
+  -- lvim.lsp.buffer_mappings.normal_mode["gp"] = {
+  --   function()
+  --     require("user.peek").Peek "definition"
+  --   end,
+  --   "Peek definition",
+  -- }
+  -- lvim.lsp.buffer_mappings.normal_mode["K"] = {
+  --   "<cmd>lua require('user.builtin').show_documentation()<CR>",
+  --   "Show Documentation",
+  -- }
   lvim.lsp.on_attach_callback = M.lsp_on_attach_callback
 
   -- Lualine
@@ -381,7 +381,7 @@ M.config = function()
     { "query", "r", "regex", "rego", "ruby", "rust", "scala", "scss", "solidity" },
     { "swift", "teal", "toml", "tsx", "typescript", "vim", "vue", "yaml", "zig" },
   }
-  lvim.builtin.treesitter.ensure_installed = languages
+  -- lvim.builtin.treesitter.ensure_installed = languages
   lvim.builtin.treesitter.highlight.disable = { "org" }
   lvim.builtin.treesitter.highlight.aditional_vim_regex_highlighting = { "org" }
   lvim.builtin.treesitter.ignore_install = { "haskell", "norg" }

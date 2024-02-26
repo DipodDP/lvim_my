@@ -42,6 +42,7 @@ reload "user.cybu"
 reload "user.neotest"
 reload "user.surround"
 reload "user.bookmark"
+reload "user.bookmarks"
 reload "user.todo-comments"
 -- reload "user.jaq"
 -- reload "user.fidget"
@@ -49,7 +50,7 @@ reload "user.todo-comments"
 reload "user.git"
 reload "user.zen-mode"
 reload "user.inlay-hints"
-reload "user.telescope"
+-- reload "user.telescope"
 reload "user.bqf"
 reload "user.dial"
 reload "user.numb"
@@ -58,9 +59,9 @@ reload "user.treesitter"
 reload "user.colorizer"
 reload "user.neoscroll"
 reload "user.dotenv"
--- -- reload "user.tabnine"
--- -- reload "user.copilot"
--- -- reload "user.chatgpt"
+-- reload "user.tabnine"
+-- reload "user.copilot"
+-- reload "user.chatgpt"
 -- reload "user.neoai"
 reload "user.whichkey"
 reload "user.cmp"
@@ -94,8 +95,6 @@ reload "plugins"
 --                     |------ themeplugconfig.lua (✓)
 --
 --================================-> END <-===================================--
-
-
 
 -- require 'lspconfig'.csharp_ls.setup {}
 
